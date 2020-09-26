@@ -72,6 +72,7 @@ flutter:
    - assets/images/icons/windows.png
    - assets/images/icons/notebook.png
    - assets/images/icons/user.png
+   - assets/images/icons/users.png
    - assets/images/icons/menu.png
    - assets/images/icons/house.png
    - assets/images/icons/chat.png

@@ -35,7 +35,7 @@ Widget Cnt(String img, String txt, String link) {
     child: Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          color: Colors.indigoAccent),
+          color: Color(0xFF6F35A5)),
       alignment: Alignment.topLeft,
       padding: EdgeInsets.all(20),
       // color: Colors.black,
@@ -46,7 +46,7 @@ Widget Cnt(String img, String txt, String link) {
             child: Text(
               txt,
               textAlign: TextAlign.start,
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ),
           Image.asset(

@@ -47,7 +47,7 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: Image.asset(
-              'assets/images/icons/notebook.png',
+              'assets/images/icons/users.png',
               scale: 12,
             ),
             title: Text("SignIn"),

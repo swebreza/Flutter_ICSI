@@ -26,10 +26,11 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.03),
             Image.asset(
-              "assets/icons/login.png",
+              "assets/images/icons/login.png",
               height: size.height * 0.35,
             ),
             SizedBox(height: size.height * 0.03),
+            //FireBase Code Here
             RoundedInputField(
               hintText: "Your Email",
               onChanged: (value) {},

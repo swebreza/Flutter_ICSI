@@ -24,9 +24,10 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.03),
             Image.asset(
-              "assets/icons/signup.png",
+              "assets/images/icons/signup.png",
               height: size.height * 0.35,
             ),
+            // FireBase Code Starts Here
             RoundedInputField(
               hintText: "Your Email",
               onChanged: (value) {},
@@ -57,15 +58,15 @@ class Body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SocalIcon(
-                  iconSrc: "assets/icons/facebook.png",
+                  iconSrc: "assets/images/icons/facebook.png",
                   press: () {},
                 ),
                 SocalIcon(
-                  iconSrc: "assets/icons/twitter.png",
+                  iconSrc: "assets/images/icons/twitter.png",
                   press: () {},
                 ),
                 SocalIcon(
-                  iconSrc: "assets/icons/google-plus.png",
+                  iconSrc: "assets/images/icons/google-plus.png",
                   press: () {},
                 ),
               ],

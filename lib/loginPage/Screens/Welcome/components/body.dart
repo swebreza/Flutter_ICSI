@@ -20,12 +20,12 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "WELCOME TO EDU",
+              "WELCOME TO ICSI",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: size.height * 0.05),
             Image.asset(
-              "assets/icons/chat.png",
+              "assets/images/icons/chat.png",
               height: size.height * 0.45,
             ),
             SizedBox(height: size.height * 0.05),
