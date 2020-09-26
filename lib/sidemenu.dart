@@ -45,6 +45,14 @@ class SideMenu extends StatelessWidget {
             title: Text("Notes"),
             onTap: () => Navigator.of(context).pushNamed('/notes'),
           ),
+          ListTile(
+            leading: Image.asset(
+              'assets/images/icons/notebook.png',
+              scale: 12,
+            ),
+            title: Text("SignIn"),
+            onTap: () => Navigator.of(context).pushNamed('/signin'),
+          ),
           Image.asset(
             'assets/images/applications.png',
             fit: BoxFit.cover,
