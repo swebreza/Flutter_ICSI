@@ -1,3 +1,6 @@
+import 'package:Flutter_ICSI/myHome.dart';
+import 'package:Flutter_ICSI/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Login/login_screen.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Signup/components/background.dart';
@@ -7,9 +10,16 @@ import 'package:Flutter_ICSI/loginPage/components/already_have_an_account_acheck
 import 'package:Flutter_ICSI/loginPage/components/rounded_button.dart';
 import 'package:Flutter_ICSI/loginPage/components/rounded_input_field.dart';
 import 'package:Flutter_ICSI/loginPage/components/rounded_password_field.dart';
-// import 'package:flutter_svg/svg.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  String email;
+  String password;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,18 +37,43 @@ class Body extends StatelessWidget {
               "assets/images/icons/signup.png",
               height: size.height * 0.35,
             ),
+
             // FireBase Code Starts Here
+
             RoundedInputField(
-              hintText: "Your Email",
-              onChanged: (value) {},
-            ),
+                hintText: "Your Email",
+                email: email,
+                onChanged: (value) {
+                  if (value.isEmpty || value.length < 8) {
+                    return "Please Enter Valid email";
+                  }
+                  return email = value;
+                }),
             RoundedPasswordField(
-              onChanged: (value) {},
+              password: password,
+              onChanged: (value) {
+                if (value.isEmpty || value.length < 7) {
+                  return "Please Enter more than 7 long";
+                }
+                return password = value;
+              },
             ),
             RoundedButton(
-              text: "SIGNUP",
-              press: () {},
-            ),
+                text: "SIGNUP",
+                press: () async {
+                  try {
+                    final auth = Provider.of(context).auth;
+
+                    String userId = await auth.createUserWithEmailAndPassword(
+                      email,
+                      password,
+                    );
+
+                    print('Signed in $userId');
+                  } catch (e) {
+                    print(e);
+                  }
+                }),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               login: false,

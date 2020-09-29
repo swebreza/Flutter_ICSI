@@ -1,11 +1,8 @@
 import 'package:Flutter_ICSI/loginPage/Screens/Login/login_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:Flutter_ICSI/loginPage/Screens/Login/components/background.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Signup/signup_screen.dart';
-// import 'package:Flutter_ICSI/loginPage/Screens/Welcome/components/background.dart';
 import 'package:Flutter_ICSI/loginPage/components/rounded_button.dart';
 import 'package:Flutter_ICSI/loginPage/constants.dart'; //constants.dart
-// import 'package:flutter_svg/svg.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Welcome/components/background.dart'
     as prefix;
 

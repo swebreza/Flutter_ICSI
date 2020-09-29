@@ -1,3 +1,5 @@
+import 'package:Flutter_ICSI/auth.dart';
+import 'package:Flutter_ICSI/provider.dart';
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatelessWidget {
@@ -50,8 +52,15 @@ class SideMenu extends StatelessWidget {
               'assets/images/icons/users.png',
               scale: 12,
             ),
-            title: Text("SignIn"),
-            onTap: () => Navigator.of(context).pushNamed('/signin'),
+            title: Text("SignOut"),
+            onTap: () async {
+              try {
+                Auth auth = Provider.of(context).auth;
+                await auth.signOut();
+              } catch (e) {
+                print(e);
+              }
+            },
           ),
           Image.asset(
             'assets/images/applications.png',

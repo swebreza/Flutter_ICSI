@@ -1,3 +1,7 @@
+import 'package:Flutter_ICSI/loginPage/Screens/Signup/components/or_divider.dart';
+import 'package:Flutter_ICSI/loginPage/Screens/Signup/components/social_icon.dart';
+import 'package:Flutter_ICSI/provider.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Login/components/background.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Signup/signup_screen.dart';
@@ -5,12 +9,23 @@ import 'package:Flutter_ICSI/loginPage/components/already_have_an_account_acheck
 import 'package:Flutter_ICSI/loginPage/components/rounded_button.dart';
 import 'package:Flutter_ICSI/loginPage/components/rounded_input_field.dart';
 import 'package:Flutter_ICSI/loginPage/components/rounded_password_field.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 // import 'package:flutter_svg/svg.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({
     Key key,
   }) : super(key: key);
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  String email;
+  String password;
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +48,27 @@ class Body extends StatelessWidget {
             //FireBase Code Here
             RoundedInputField(
               hintText: "Your Email",
+              email: email,
               onChanged: (value) {},
             ),
             RoundedPasswordField(
+              password: password,
               onChanged: (value) {},
             ),
             RoundedButton(
-              text: "LOGIN",
-              press: () {},
-            ),
+                text: "LOGIN",
+                press: () async {
+                  try {
+                    final auth = Provider.of(context).auth;
+                    String userId = await auth.signInWithEmailAndPassword(
+                      email,
+                      password,
+                    );
+                    print('Signed in $userId');
+                  } catch (e) {
+                    print(e);
+                  }
+                }),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               press: () {
@@ -55,6 +82,21 @@ class Body extends StatelessWidget {
                 );
               },
             ),
+            OrDivider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SocalIcon(
+                    iconSrc: "assets/images/icons/facebook.png", press: () {}),
+                SocalIcon(
+                  iconSrc: "assets/images/icons/twitter.png",
+                  press: () {},
+                ),
+                SocalIcon(
+                    iconSrc: "assets/images/icons/google-plus.png",
+                    press: () {}),
+              ],
+            )
           ],
         ),
       ),
