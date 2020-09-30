@@ -1,4 +1,6 @@
+import 'package:Flutter_ICSI/auth.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Welcome/welcome_screen.dart';
+import 'package:Flutter_ICSI/provider.dart';
 import 'package:Flutter_ICSI/routes_map.dart';
 import 'package:flutter/material.dart';
 
@@ -10,20 +12,22 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      //Routes------------------------------------------------
-      initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
-      //Routes------------------------------------------------
+    return Provider(
+        auth: Auth(),
+        child: MaterialApp(
+          //Routes------------------------------------------------
+          initialRoute: '/',
+          onGenerateRoute: RouteGenerator.generateRoute,
+          //Routes------------------------------------------------
 
-      debugShowCheckedModeBanner: false,
-      title: 'ICSI',
-      theme: ThemeData(
-        primarySwatch: Colors.lime,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'ICSI',
+          theme: ThemeData(
+            primarySwatch: Colors.lime,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
 
-      home: WelcomeScreen(),
-    );
+          home: WelcomeScreen(),
+        ));
   }
 }

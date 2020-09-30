@@ -8,10 +8,7 @@ import '../../../provider.dart';
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      auth: Auth(),
-      child: Scaffold(body: CheckerWelcome()),
-    );
+    return Scaffold(body: CheckerWelcome());
   }
 }
 

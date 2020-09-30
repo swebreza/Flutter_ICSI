@@ -1,6 +1,8 @@
 import 'package:Flutter_ICSI/loginPage/Screens/Signup/components/or_divider.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Signup/components/social_icon.dart';
+import 'package:Flutter_ICSI/myHome.dart';
 import 'package:Flutter_ICSI/provider.dart';
+import '../../Welcome/welcome_screen.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Flutter_ICSI/loginPage/Screens/Login/components/background.dart';
@@ -45,15 +47,18 @@ class _BodyState extends State<Body> {
               height: size.height * 0.35,
             ),
             SizedBox(height: size.height * 0.03),
-            //FireBase Code Here
             RoundedInputField(
               hintText: "Your Email",
               email: email,
-              onChanged: (value) {},
+              onChanged: (value) {
+                email = value;
+              },
             ),
             RoundedPasswordField(
               password: password,
-              onChanged: (value) {},
+              onChanged: (value) {
+                password = value;
+              },
             ),
             RoundedButton(
                 text: "LOGIN",
@@ -61,10 +66,13 @@ class _BodyState extends State<Body> {
                   try {
                     final auth = Provider.of(context).auth;
                     String userId = await auth.signInWithEmailAndPassword(
-                      email,
+                      email.trim(),
                       password,
                     );
                     print('Signed in $userId');
+                    userId != null
+                        ? Navigator.of(context).pushNamed('/myhome')
+                        : null;
                   } catch (e) {
                     print(e);
                   }

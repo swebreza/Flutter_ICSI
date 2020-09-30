@@ -37,25 +37,16 @@ class _BodyState extends State<Body> {
               "assets/images/icons/signup.png",
               height: size.height * 0.35,
             ),
-
-            // FireBase Code Starts Here
-
             RoundedInputField(
                 hintText: "Your Email",
                 email: email,
                 onChanged: (value) {
-                  if (value.isEmpty || value.length < 8) {
-                    return "Please Enter Valid email";
-                  }
-                  return email = value;
+                  email = value;
                 }),
             RoundedPasswordField(
               password: password,
               onChanged: (value) {
-                if (value.isEmpty || value.length < 7) {
-                  return "Please Enter more than 7 long";
-                }
-                return password = value;
+                password = value;
               },
             ),
             RoundedButton(
@@ -65,11 +56,13 @@ class _BodyState extends State<Body> {
                     final auth = Provider.of(context).auth;
 
                     String userId = await auth.createUserWithEmailAndPassword(
-                      email,
+                      email.trim(),
                       password,
                     );
-
                     print('Signed in $userId');
+                    userId != null
+                        ? Navigator.of(context).pushNamed('/myhome')
+                        : null;
                   } catch (e) {
                     print(e);
                   }

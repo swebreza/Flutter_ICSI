@@ -1,5 +1,6 @@
 import 'package:Flutter_ICSI/drawer/contactus.dart';
 import 'package:Flutter_ICSI/main.dart';
+import 'package:Flutter_ICSI/myHome.dart';
 import 'package:Flutter_ICSI/notes.dart';
 import 'package:Flutter_ICSI/products.dart';
 import 'package:Flutter_ICSI/screen/wrapper.dart';
@@ -22,6 +23,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Notes());
       case '/signin':
         return MaterialPageRoute(builder: (_) => Wrapper());
+      case '/myhome':
+        return MaterialPageRoute(builder: (_) => MyHome());
     }
     // If args is not of the correct type, return an error page.
     // You can also throw an exception while in development.
