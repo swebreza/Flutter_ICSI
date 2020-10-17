@@ -7,6 +7,8 @@ import 'package:Flutter_ICSI/screen/wrapper.dart';
 //import 'package:Flutter_ICSI/service/authScreen.dart';
 import 'package:flutter/material.dart';
 
+import 'screen/pdf/pdfMain.dart';
+
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     // Getting arguments passed in while calling Navigator.pushNamed
@@ -20,7 +22,7 @@ class RouteGenerator {
       case '/product':
         return MaterialPageRoute(builder: (_) => Products());
       case '/notes':
-        return MaterialPageRoute(builder: (_) => Notes());
+        return MaterialPageRoute(builder: (_) => PDFMain());
       case '/signin':
         return MaterialPageRoute(builder: (_) => Wrapper());
       case '/myhome':
