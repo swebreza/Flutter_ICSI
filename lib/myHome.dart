@@ -12,7 +12,21 @@ class MyHome extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('ICSI'),
+        title: Text('Gurukul'),
+        actions: [
+          IconButton(
+            alignment: Alignment.topRight,
+            color: Colors.purple,
+            onPressed: () {},
+            icon: Icon(Icons.video_collection),
+          ),
+          IconButton(
+            alignment: Alignment.topRight,
+            color: Colors.purple,
+            onPressed: () {},
+            icon: Icon(Icons.notifications),
+          ),
+        ],
         backgroundColor: Colors.white,
         elevation: 0,
       ),

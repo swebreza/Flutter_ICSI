@@ -13,31 +13,40 @@ class PDFMain extends StatefulWidget {
   _PDFMainState createState() => _PDFMainState();
 }
 
-final FirebaseStorage storage = FirebaseStorage.instance;
+// final FirebaseStorage storage = FirebaseStorage.instance;
 
-Future<String> uploadImage(var durl) async {
-  StorageReference ref = storage.ref().child("/testing/LT.pdf");
-  StorageUploadTask uploadTask = ref.putFile(durl);
-
-  var dowurl = await (await uploadTask.onComplete).ref.getDownloadURL();
-  var url = dowurl.toString();
-
-  return url;
-}
+// Future<String> uploadImage(var durl) async {
+//   StorageReference ref = storage.ref().child("/testing/LT.pdf");
+//   StorageUploadTask uploadTask = ref.putFile(durl);
+//   var dowurl = await (await uploadTask.onComplete).ref.getDownloadURL();
+//   var url = dowurl.toString();
+//   return url;
+// }
 
 class _PDFMainState extends State<PDFMain> {
   String urlPDFPath = '';
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    getFileFromUrl(
-            "https://firebasestorage.googleapis.com/v0/b/icsi-15819.appspot.com/o/Laplace%20transforms.pdf?alt=media&token=72a8bb94-a783-4935-af38-267aa4ba8ff6")
-        .then((value) {
-      setState(() {
-        urlPDFPath = value.path;
-      });
+  //   getFileFromUrl(
+  //           "https://firebasestorage.googleapis.com/v0/b/icsi-15819.appspot.com/o/Laplace%20transforms.pdf?alt=media&token=72a8bb94-a783-4935-af38-267aa4ba8ff6")
+  //       .then((value) {
+  //     setState(() {
+  //       urlPDFPath = value.path;
+  //     });
+  //   });
+  // }
+  StorageReference _reference =
+      FirebaseStorage.instance.ref().child("Laplace transforms.pdf");
+
+  Future downloadurl() async {
+    String downloadAddress = await _reference.getDownloadURL();
+    print(_reference);
+    setState(() {
+      urlPDFPath = downloadAddress;
+      print("URL =====>>>>" + urlPDFPath);
     });
   }
 
@@ -85,6 +94,7 @@ class _PDFViewPageState extends State<PDFViewPage> {
   int _totalPages = 0;
   int _currentPage = 0;
   PDFViewController _pdfViewController;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
